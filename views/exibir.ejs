@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('head'); %>
+        <title>Listar posts</title>
+</head>
+
+<body>
+    <%- include('menu'); %>
+        <div>
+            <div class="container d-flex p-3">
+                <h2>Listagem dos posts</h2>
+            </div>
+            <div class="container d-flex p-3">
+                <% if(posts) { %>
+                    <% posts.forEach((post)=> { %>
+                        <div class="card m-4 shadow-sm" style="width: 18rem; height: 8rem;">
+                            <img src="/imagens/<%= post.imagem %>" alt="Imagem" class="card-img-top">
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    <%= post.titulo %>
+                                </h5>
+                                <p class="card-text">
+                                    <%= post.descricao %>
+                                </p>
+                                <p class="card-text">
+                                    <%= post.criadoEm %>
+                                </p>
+                                <a href="/edit/<%=post.id %>" class="btn btn-primary">
+                                    Editar
+                                </a>
+                                <a href="/delete/<%=post.id %>" class="btn btn-primary">
+                                    Deletar
+                                </a>
+                            </div>
+                        </div>
+                        <% }) %>
+                <% } else { %>
+                    <tr>
+                        <td colspan="4">Nenhum registro encontrado</td>
+                    </tr>
+                <% } %>
+            </div>
+
+        </div>
+</body>
+
+</html>
